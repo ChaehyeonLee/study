@@ -32,21 +32,21 @@ def dfs(graph, root, target):
 
 #-----------------------------------#
 # dfs(graph, root, target) method를 테스트하기 위한 graph
-test_tree = {'A': ['B', 'C'], 'B':['A', 'D'], 'C':['A', 'E', 'F'], 'D': ['B', 'G'],
+test_graph = {'A': ['B', 'C'], 'B':['A', 'D'], 'C':['A', 'E', 'F'], 'D': ['B', 'G'],
              'E': ['C'], 'F':['C'], 'G': ['D']}
 
 #-----------------------------------#
 # dfs(graph, root, target) method 테스트
 print('# DFS Tests #')
-print('test1_output:', dfs(test_tree, 'A', None)) #'A'를 root node로 test_tree 전체를 dfs
-print('test2_output:', dfs(test_tree, 'B', 'C')) #'B'를 root node로 'C'를 찾을 때 까지 dfs 
-print('test3_output:', dfs(test_tree, 'C', 'C')) #root node와 target node가 같을 때도 잘 동작함
-print('test4_output:', dfs(test_tree, 'C', 'H')) #target을 찾지 못했을 때도 잘 동작함
+print('test1_output:', dfs(test_graph, 'A', None)) #'A'를 root node로 test_graph 전체를 dfs
+print('test2_output:', dfs(test_graph, 'B', 'C')) #'B'를 root node로 'C'를 찾을 때 까지 dfs 
+print('test3_output:', dfs(test_graph, 'C', 'C')) #root node와 target node가 같을 때도 잘 동작함
+print('test4_output:', dfs(test_graph, 'C', 'H')) #target을 찾지 못했을 때도 잘 동작함
 
 #-----------------------------------#
 #cycle이 있는 경우 동작 테스트
 #'D','G','H' node 간에 cycle이 있음
-cycle_test_tree = {'A': ['B', 'C'], 'B':['A', 'D'], 'C':['A', 'E', 'F'], 'D': ['B', 'G', 'H'],
+cycle_test_graph = {'A': ['B', 'C'], 'B':['A', 'D'], 'C':['A', 'E', 'F'], 'D': ['B', 'G', 'H'],
                    'E': ['C'], 'F':['C'], 'G': ['D','H'], 'H': {'D', 'G'}}
 
-print('cycle_test_output:', dfs(cycle_test_tree, 'A', None)) ##cycle이 있는 경우에도 잘 동작함
+print('cycle_test_output:', dfs(cycle_test_graph, 'A', None)) #cycle이 있는 경우에도 잘 동작함

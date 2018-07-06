@@ -30,13 +30,13 @@ def bfs(graph, root, target):
 
 #-----------------------------------#
 # bfs(graph, root, target) method를 테스트하기 위한 graph
-test_tree = {'A': ['B', 'C'], 'B':['A', 'D'], 'C':['A', 'E', 'F'], 'D': ['B', 'G'],
+test_graph = {'A': ['B', 'C'], 'B':['A', 'D'], 'C':['A', 'E', 'F'], 'D': ['B', 'G'],
              'E': ['C'], 'F':['C'], 'G': ['D']}
 
 #-----------------------------------#
 # bfs(graph, root, target) method 테스트
 print('# BFS Tests #')
-print('test1_output:', bfs(test_tree, 'A', None)) #'A'를 root node로 test_tree 전체를 bfs
-print('test2_output:', bfs(test_tree, 'B', 'C')) #'B'를 root node로 'C'를 찾을 때 까지 bfs 
-print('test3_output:', bfs(test_tree, 'C', 'C')) #root node와 target node가 같을 때도 잘 동작함
-print('test4_output:', bfs(test_tree, 'C', 'H')) #target을 찾지 못했을 때도 잘 동작함
+print('test1_output:', bfs(test_graph, 'A', None)) #'A'를 root node로 test_graph 전체를 bfs
+print('test2_output:', bfs(test_graph, 'B', 'C')) #'B'를 root node로 'C'를 찾을 때 까지 bfs 
+print('test3_output:', bfs(test_graph, 'C', 'C')) #root node와 target node가 같을 때도 잘 동작함
+print('test4_output:', bfs(test_graph, 'C', 'H')) #target을 찾지 못했을 때도 잘 동작함
