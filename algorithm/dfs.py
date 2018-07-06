@@ -2,7 +2,7 @@
 #visited node를 체크함, cycle이 있는 경우에도 무한루프에 빠지지 않음
 #tree 전체를 탐색하려면 goal에 None을 넣고, target node가 있는 경우는 그 값을 goal에 넣으면 된다.
 def dfs(tree, root, target):
-    visited = [] #방문한 node들이 순서대로 visited리스트에 들어간다. dfs한 결과를 나타냄
+    visited = [] #방문한 node들이 순서대로 visited리스트에 들어간다. dfs할 때의 탐색 순서를 나타냄
     stack = [root] ##방문할 node들이 stack에 저장됨. 먼저 root node를 stack에 넣음
     
     while stack:
@@ -10,7 +10,7 @@ def dfs(tree, root, target):
         if node not in visited:
             visited.append(node)
             if node == target: #target node를 찾으면 탐색을 중지함
-                return visited #root node부터 target node까지의 dfs 결과를 반환함
+                return visited #root node부터 target node까지의 dfs한 순서를 반환함
             neighbor = tree.get(node) #현재 node의 neighbor node를 받아옴
             if neighbor:
                 stack.extend(neighbor)
@@ -18,7 +18,7 @@ def dfs(tree, root, target):
     if target != None:
         print("Couldn't find the target")
 
-    return visited #root node부터 tree 전체를 dfs한 결과를 반환함
+    return visited #root node부터 tree 전체를 dfs한 순서를 반환함
 
 
 #-----------------------------------#

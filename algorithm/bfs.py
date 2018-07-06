@@ -15,6 +15,7 @@ def bfs(tree, root, target):
                 queue.extend(neighbor)
     if target != None:
         print("Couldn't find the target")
+        
     return visited #root node부터 tree 전체를 bfs 순서를 반환함
 
 
