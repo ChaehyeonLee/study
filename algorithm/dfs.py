@@ -14,6 +14,10 @@ def dfs(tree, root, target):
             neighbor = tree.get(node) #현재 node의 neighbor node를 받아옴
             if neighbor:
                 stack.extend(neighbor)
+
+    if target != None:
+        print("Couldn't find the target")
+
     return visited #root node부터 tree 전체를 dfs한 결과를 반환함
 
 
@@ -28,6 +32,7 @@ print('# DFS Tests #')
 print('test1_output:', dfs(test_tree, 'A', None)) #'A'를 root node로 test_tree 전체를 dfs
 print('test2_output:', dfs(test_tree, 'B', 'C')) #'B'를 root node로 'C'를 찾을 때 까지 dfs 
 print('test3_output:', dfs(test_tree, 'C', 'C')) #root node와 target node가 같을 때도 잘 동작함
+print('test4_output:', dfs(test_tree, 'C', 'H')) #target을 찾지 못했을 때도 잘 동작함
 
 #-----------------------------------#
 #cycle이 있는 경우 동작 테스트
