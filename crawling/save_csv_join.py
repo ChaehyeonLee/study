@@ -1,3 +1,4 @@
+#간단하게 CSV 형식으로 저장하기
 print('rank,city,population')
 
 print(','.join(['1', '상하이', '24150000']))
