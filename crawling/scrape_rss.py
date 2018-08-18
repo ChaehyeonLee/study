@@ -1,3 +1,4 @@
+#ElementTree로 RSS 파싱하기
 from xml.etree import ElementTree
 
 tree = ElementTree.parse('rss.xml')
