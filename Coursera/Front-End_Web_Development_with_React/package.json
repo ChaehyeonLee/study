@@ -11,5 +11,8 @@
     "url": "https://github.com/ChaehyeonLee/study/tree/master/Coursera/.git"
   },
   "author": "LeeChaehyeon",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  }
 }
