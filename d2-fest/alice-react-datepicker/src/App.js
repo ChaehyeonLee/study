@@ -1,27 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import DatePicker from './components/DatePicker'
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleDayClick = this.handleDayClick.bind(this);
+    this.state = {
+      selectedDate: new Date(),
+    }
+  }
   render() {
+    const {selectedDate} = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="MainContent">
+          <DatePicker fullDate={selectedDate} onDayClick={this.handleDayClick}/>
+        </div>
       </div>
     );
+  }
+
+  handleDayClick(newDay) {
+    const {selectedDate} = this.state;
+
+    this.setState({
+      selectedDate: new Date(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        newDay,
+      )
+    })
   }
 }
 
