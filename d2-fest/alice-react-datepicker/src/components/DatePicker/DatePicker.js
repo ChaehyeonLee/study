@@ -11,15 +11,16 @@ class DatePicker extends React.PureComponent {
         const monthNumber = fullDate.getMonth();
         const yearNumber = fullDate.getFullYear();
         const monthName = getMonthName(monthNumber);
-
+        const today = new Date();
         return (
             <div className="DatePickerContainer">
-                <div className="DatePickerContainer__Title">{monthName}</div>
+                <div className="DatePickerContainer__Title">{yearNumber} {monthName}</div>
                 <Month 
                     date={dateNumber}
                     month={monthNumber}
                     year={yearNumber}
                     onDayClick={onDayClick}
+                    today={today}
                 />
             </div>
         );

@@ -46,7 +46,7 @@ class Month extends React.PureComponent {
     }
 
     renderWeek(fullDate, dayIndex) {
-        const {onDayClick} = this.props;
+        const {onDayClick, today} = this.props;
         const {hoveredDate} = this.state;
         if (fullDate == null) {
             return <Day key={dayIndex} />;
@@ -62,6 +62,7 @@ class Month extends React.PureComponent {
             hovering={date === hoveredDate}
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}
+            today={today}
             />
         );
     }

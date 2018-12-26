@@ -25,6 +25,14 @@
     text-align: center;
 }
 
+.Weekday--saturday {
+    color: blue;
+}
+
+.Weekday--sunday {
+    color: red;
+}
+
 .Week {
     display: flex;
 }
@@ -49,6 +57,13 @@
     margin-left: -1px;
 }
 
+.Day--saturday {
+    color: blue;
+}
+.Day--sunday {
+    color: red;
+}
+
 .Day--selected {
     background: #5c6ac4;
     border: 1px solid #5c6ac4;
@@ -58,6 +73,10 @@
 .Day--hovering {
     background: #f2f2f2;
     border: 1px solid #f2f2f2;
+}
+.Day--today {
+    color: #32CD32;
+    font-weight: bold;
 }
 
 .EmptyStateDay {

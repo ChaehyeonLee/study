@@ -15,7 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="MainContent">
-          <DatePicker fullDate={selectedDate} onDayClick={this.handleDayClick}/>
+          <DatePicker 
+            fullDate={selectedDate}
+            onDayClick={this.handleDayClick}/>
         </div>
       </div>
     );
