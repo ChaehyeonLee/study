@@ -37,7 +37,7 @@ class DatePicker extends React.PureComponent {
         const { selectedDates } = this.state;
         if (contains(selectedDates, newDate)) {
             this.setState({
-                selectedDate: null,
+                selectedDate: newDate,
                 selectedDates: removeByID(selectedDates, newDate),
             })
         } else {
