@@ -7,9 +7,16 @@ class DatePicker extends React.PureComponent {
     constructor(props) {
         super(props);
         this.handleDayClick = this.handleDayClick.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
         this.state = {
             selectedDate: null,
             selectedDates: [],
+
+            hoveredDate: null,
+            
+            multiOption: this.props.MultiOption,
+            RangeOption: this.props.RangeOption,
         }
     }
     render() {
@@ -26,27 +33,69 @@ class DatePicker extends React.PureComponent {
                 <div className="DatePickerContainer__Title">{today_yearNumber} {today_monthName}</div>
                 <Month
                     today={today}
+                    selectedDate={this.state.selectedDate}
                     selectedDates={this.state.selectedDates}
                     onDayClick={onDayClick}
+                    onMouseEnter={this.handleMouseEnter}
+                    onMouseLeave={this.handleMouseLeave}
+                    hoveredDate={this.state.hoveredDate}
                 />
             </div>
         );
     }
 
+
+    handleMouseEnter(date) {
+        this.setState({
+            hoveredDate: date,
+        })
+    }
+
+    handleMouseLeave() {
+        this.setState({
+            hoveredDate: null,
+        })
+    }
+
     handleDayClick(newDate) {
         const { selectedDates } = this.state;
-        if (contains(selectedDates, newDate)) {
-            this.setState({
-                selectedDate: newDate,
-                selectedDates: removeByID(selectedDates, newDate),
-            })
+        const { multiOption } = this.state;
+
+        if (multiOption) {
+            if (contains(selectedDates, newDate)) {
+                this.setState({
+                    selectedDate: newDate,
+                    selectedDates: removeByID(selectedDates, newDate),
+                })
+            } else {
+                this.setState({
+                    selectedDate: newDate,
+                    selectedDates: this.state.selectedDates.concat(newDate)
+                })
+            }
         } else {
-            this.setState({
-                selectedDate: newDate,
-                selectedDates: this.state.selectedDates.concat(newDate)
-        })
+            if (selectedDates[0]){
+                if (selectedDates[0].toDateString() === newDate.toDateString()){
+                    this.setState({
+                        selectedDate: newDate,
+                        selectedDates: [],
+                    })
+                } else {
+                    this.setState({
+                        selectedDate: newDate,
+                        selectedDates: [newDate],
+                    })
+                }
+                
+            } else {
+                this.setState({
+                    selectedDate: newDate,
+                    selectedDates: this.state.selectedDates.concat(newDate)
+                })
+            }
+
+            
         }
-        
       }
 }
 

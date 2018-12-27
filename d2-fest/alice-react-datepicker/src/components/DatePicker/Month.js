@@ -8,12 +8,8 @@ class Month extends React.PureComponent {
     constructor(props) {
         super(props);
         this.renderWeek = this.renderWeek.bind(this);
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseLeave = this.handleMouseLeave.bind(this);
 
-        this.state = {
-            hoveredDate: null,
-        }
+
     }
     render() {
         const today = this.props.today;
@@ -48,8 +44,10 @@ class Month extends React.PureComponent {
     }
 
     renderWeek(fullDate, dayIndex) {
-        const {today, selectedDates, onDayClick} = this.props;
-        const {hoveredDate} = this.state;
+        const {today, selectedDates, 
+            onDayClick, onMouseEnter, 
+            onMouseLeave, hoveredDate} = this.props;
+        
         let selected = false;
         if (fullDate == null) {
             return <Day key={dayIndex} />;
@@ -61,6 +59,8 @@ class Month extends React.PureComponent {
             selected = true;
         }
 
+        console.log({date, hoveredDate})
+
         return (
             <Day
             key={dayIndex}
@@ -68,24 +68,14 @@ class Month extends React.PureComponent {
             onClick={onDayClick}
             selected={selected}
             hovering={date === hoveredDate}
-            onMouseEnter={this.handleMouseEnter}
-            onMouseLeave={this.handleMouseLeave}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
             today={today}
             />
         );
     }
 
-    handleMouseEnter(date) {
-        this.setState({
-            hoveredDate: date,
-        })
-    }
 
-    handleMouseLeave() {
-        this.setState({
-            hoveredDate: null,
-        })
-    }
 }
 
 export default Month;

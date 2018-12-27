@@ -31,6 +31,7 @@ export default function Day({fullDate, onClick, selected, hovering, onMouseEnter
             onClick={onClick.bind(this, fullDate)}
             onMouseEnter={onMouseEnter.bind(this, date)}
             onMouseLeave={onMouseLeave}
+            //onDragStart={onDragStart.bind(this,date)}
         >{date}</button>
     );
 }

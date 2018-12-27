@@ -10,7 +10,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="MainContent">
-          <DatePicker />
+          <DatePicker 
+            MultiOption={false}
+            RangeOption={true}          />
         </div>
       </div>
     );
