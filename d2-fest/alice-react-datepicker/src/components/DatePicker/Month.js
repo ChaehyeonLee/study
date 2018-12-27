@@ -2,7 +2,7 @@ import React from "react";
 import Weekday from "./Weekday";
 import Day from "./Day";
 import "./DatePicker.css";
-import {weekdays, abbreviationFromWeekday, WEEK_LENGTH, getWeeksForMonth} from "./helpers";
+import {weekdays, abbreviationFromWeekday, WEEK_LENGTH, getWeeksForMonth, contains} from "./helpers";
 
 class Month extends React.PureComponent {
     constructor(props) {
@@ -16,7 +16,7 @@ class Month extends React.PureComponent {
         }
     }
     render() {
-        const {month, year} = this.props;
+        const today = this.props.today;
         const weekDaysMarkup = weekdays.map((weekday) => {
             return (
                 <Weekday 
@@ -27,8 +27,10 @@ class Month extends React.PureComponent {
             );
         });
 
-        const weeks = getWeeksForMonth(month, year);
 
+        const month = today.getMonth();
+        const year = today.getFullYear();
+        const weeks = getWeeksForMonth(month, year);
         const weeksMarkup = weeks.map((week, index) => {
             return (
                 <div role="row" className="Week" key={index}>
@@ -46,19 +48,25 @@ class Month extends React.PureComponent {
     }
 
     renderWeek(fullDate, dayIndex) {
-        const {onDayClick, today} = this.props;
+        const {today, selectedDates, onDayClick} = this.props;
         const {hoveredDate} = this.state;
+        let selected = false;
         if (fullDate == null) {
             return <Day key={dayIndex} />;
         }
 
         const date = fullDate.getDate();
+
+        if (contains(selectedDates, fullDate)) {
+            selected = true;
+        }
+
         return (
             <Day
             key={dayIndex}
             fullDate={fullDate}
             onClick={onDayClick}
-            selected={date === this.props.date}
+            selected={selected}
             hovering={date === hoveredDate}
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}

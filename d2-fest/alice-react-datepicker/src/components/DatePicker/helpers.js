@@ -17,6 +17,26 @@ export function getMonthName(index) {
     return months[index]
 }
 
+export function contains(arr, element) {
+    if (arr) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].toDateString() === element.toDateString()) {
+              return true;
+            }
+        }
+    }
+    return false;
+    
+}
+
+export function removeByID(arr, element) {
+    let ary = arr;
+    let id = ary.map(Number).indexOf(+element);
+
+    ary.splice(id, 1);
+    return ary;
+}
+
 export const weekdays = [
     "Sunday",
     "Monday",
